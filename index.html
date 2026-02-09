@@ -14,257 +14,189 @@
   </head>
   <body>
     <header class="site-header">
-      <nav class="nav">
+      <div class="nav">
         <div class="logo">Origon<span>AI</span></div>
-        <div class="nav-links">
-          <a href="#platform">Platform</a>
-          <a href="#how">How it works</a>
-          <a href="#use-cases">Use cases</a>
-          <a href="#security">Security</a>
-          <a href="#pricing">Pricing</a>
-        </div>
-        <div class="nav-cta">
-          <button class="btn ghost">See how it works</button>
-          <button class="btn primary">Create your agent</button>
-        </div>
-      </nav>
+        <button class="btn primary" id="open-form">Contact sales</button>
+      </div>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-content">
           <p class="eyebrow">Agentic AI Platform</p>
-          <h1>Build AI agents that run your operations — end to end.</h1>
+          <h1>Build AI agents that run real operations.</h1>
           <p class="subtext">
-            Origon AI lets teams deploy reliable chat, voice, and workflow agents powered by your
-            SOPs, tools, and knowledge base. Automate the operational work that slows you down.
+            Create, deploy, and manage chat, voice, and workflow agents grounded in your SOPs.
+            Automate the operational work that slows teams down.
           </p>
           <div class="hero-actions">
-            <button class="btn primary">Create your agent</button>
-            <button class="btn ghost">See how it works</button>
-          </div>
-          <div class="hero-metrics">
-            <div>
-              <p class="metric-value">40%</p>
-              <p class="metric-label">Lower support volume</p>
-            </div>
-            <div>
-              <p class="metric-value">24/7</p>
-              <p class="metric-label">Always-on coverage</p>
-            </div>
-            <div>
-              <p class="metric-value">SOC 2</p>
-              <p class="metric-label">Enterprise security</p>
-            </div>
+            <button class="btn primary" id="open-form-hero">Contact sales</button>
+            <p class="note">No sign-in. We respond within 24 hours.</p>
           </div>
         </div>
         <div class="hero-panel">
           <div class="panel-header">
-            <span>Active agents</span>
-            <span class="pill">Live</span>
+            <span>Live automation</span>
+            <span class="pill">Enterprise-ready</span>
           </div>
           <div class="panel-body">
-            <div class="agent-card">
-              <div>
-                <h4>Ops Coordinator</h4>
-                <p>Routes tickets, updates CRM, syncs schedules.</p>
-              </div>
-              <span class="status">Running</span>
+            <div class="panel-item">
+              <h4>Support Concierge</h4>
+              <p>Resolves tier-1 tickets, escalates exceptions.</p>
             </div>
-            <div class="agent-card">
-              <div>
-                <h4>Support Concierge</h4>
-                <p>Resolves tier-1 issues with SOP-backed answers.</p>
-              </div>
-              <span class="status">Running</span>
+            <div class="panel-item">
+              <h4>Voice Qualifier</h4>
+              <p>Calls inbound leads, books meetings, logs notes.</p>
             </div>
-            <div class="agent-card">
-              <div>
-                <h4>Voice Qualifier</h4>
-                <p>Calls inbound leads, logs notes, books demos.</p>
-              </div>
-              <span class="status">Running</span>
-            </div>
-          </div>
-          <div class="panel-footer">
-            <div>
-              <p class="metric-label">Avg. resolution time</p>
-              <p class="metric-value">2m 18s</p>
-            </div>
-            <div>
-              <p class="metric-label">Workflows automated</p>
-              <p class="metric-value">128</p>
+            <div class="panel-item">
+              <h4>Ops Coordinator</h4>
+              <p>Triggers workflows and reconciles systems.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="platform" class="section">
+      <section class="section">
         <div class="section-heading">
-          <h2>What you can build</h2>
-          <p>Purpose-built agents that replace manual effort without losing control.</p>
+          <h2>What you can deploy</h2>
+          <p>Agents purpose-built for teams replacing manual operations.</p>
         </div>
         <div class="card-grid">
           <article class="capability-card">
-            <h3>Personal AI Agents</h3>
-            <p class="card-subtitle">For founders and operators</p>
-            <p>Execute tasks, manage calendars, research, and summarize decisions so you stay in flow.</p>
+            <h3>Personal agents</h3>
+            <p>Handle scheduling, research, and task execution for founders and operators.</p>
           </article>
           <article class="capability-card">
-            <h3>Operations Automation</h3>
-            <p class="card-subtitle">For ops &amp; finance teams</p>
-            <p>Trigger workflows, reconcile data, and update systems using your SOPs and approvals.</p>
+            <h3>Ops automation</h3>
+            <p>Route approvals, update CRMs, reconcile inventory, and enforce SOPs.</p>
           </article>
           <article class="capability-card">
-            <h3>AI Chatbots</h3>
-            <p class="card-subtitle">For support &amp; revenue teams</p>
-            <p>Resolve customer questions, qualify leads, and deflect repetitive requests with precision.</p>
+            <h3>AI chatbots</h3>
+            <p>Support customers, deflect repetitive questions, and capture leads.</p>
           </article>
           <article class="capability-card">
-            <h3>Voice &amp; Call Agents</h3>
-            <p class="card-subtitle">For call centers and front desks</p>
-            <p>Answer calls, log details, route conversations, and capture summaries automatically.</p>
+            <h3>Voice agents</h3>
+            <p>Answer calls, summarize conversations, and route requests.</p>
           </article>
         </div>
       </section>
 
-      <section id="how" class="section alt">
+      <section class="section alt">
         <div class="section-heading">
-          <h2>How it works</h2>
-          <p>From idea to automation in days, not quarters.</p>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <span class="step-number">01</span>
-            <h3>Define your agent</h3>
-            <p>Set goals, escalation rules, and guardrails for each workflow.</p>
-          </div>
-          <div class="step">
-            <span class="step-number">02</span>
-            <h3>Upload SOPs &amp; knowledge</h3>
-            <p>Ground responses with internal documentation, policies, and playbooks.</p>
-          </div>
-          <div class="step">
-            <span class="step-number">03</span>
-            <h3>Connect your tools</h3>
-            <p>Integrate chat, phone, CRM, and workflow systems with secure connectors.</p>
-          </div>
-          <div class="step">
-            <span class="step-number">04</span>
-            <h3>Deploy and monitor</h3>
-            <p>Launch with full visibility, analytics, and audit trails.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="use-cases" class="section">
-        <div class="section-heading">
-          <h2>Use cases teams rely on</h2>
-          <p>Outcome-driven scenarios that show the platform in action.</p>
-        </div>
-        <div class="use-case-grid">
-          <div class="use-case">
-            <h3>Customer support automation</h3>
-            <p>Handle tier-1 issues, ticket triage, and refunds with SOP-backed accuracy.</p>
-          </div>
-          <div class="use-case">
-            <h3>Lead qualification via calls</h3>
-            <p>Call inbound leads, capture intent, and book meetings automatically.</p>
-          </div>
-          <div class="use-case">
-            <h3>Internal ops automation</h3>
-            <p>Coordinate approvals, sync inventory, and escalate exceptions instantly.</p>
-          </div>
-          <div class="use-case">
-            <h3>Founder personal assistant</h3>
-            <p>Schedule, prioritize, and summarize decisions across tools and channels.</p>
-          </div>
-          <div class="use-case">
-            <h3>24/7 AI receptionist</h3>
-            <p>Answer calls, route requests, and provide real-time updates.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="security" class="section alt">
-        <div class="section-heading">
-          <h2>Trust &amp; reliability, built in</h2>
-          <p>Enterprise-grade security so teams can deploy with confidence.</p>
+          <h2>Trusted by serious operators</h2>
+          <p>Secure by design, audit-ready, and built for enterprise reliability.</p>
         </div>
         <div class="trust-grid">
           <div class="trust-card">
-            <h3>Secure by design</h3>
-            <p>Zero-trust architecture, encrypted storage, and least-privilege access by default.</p>
+            <h3>Data privacy</h3>
+            <p>Encrypted storage, regional controls, and configurable retention.</p>
           </div>
           <div class="trust-card">
-            <h3>Data privacy controls</h3>
-            <p>Regional data residency, configurable retention, and redaction tooling.</p>
+            <h3>Audit-ready</h3>
+            <p>Immutable logs and activity trails for compliance review.</p>
           </div>
           <div class="trust-card">
-            <h3>Audit-ready logs</h3>
-            <p>Every action is tracked with immutable logs for compliance review.</p>
-          </div>
-          <div class="trust-card">
-            <h3>Enterprise infrastructure</h3>
-            <p>Redundant systems with 99.9% uptime and on-call SRE coverage.</p>
+            <h3>Uptime focus</h3>
+            <p>Redundant infrastructure with 99.9% uptime SLAs.</p>
           </div>
         </div>
       </section>
 
-      <section id="pricing" class="section pricing">
-        <div class="pricing-card">
-          <div>
-            <h2>Start building agents today</h2>
-            <p>
-              Transparent pricing designed for growing teams. Scale from single workflows to
-              enterprise-wide automation.
-            </p>
-            <ul>
-              <li>Unlimited agent drafts</li>
-              <li>Shared knowledge base</li>
-              <li>Human-in-the-loop approvals</li>
-            </ul>
-          </div>
-          <div class="pricing-actions">
-            <p class="price">$49<span>/month</span></p>
-            <button class="btn primary">Get started</button>
-            <button class="btn ghost">Talk to sales</button>
-          </div>
+      <section class="section cta">
+        <div class="cta-card">
+          <h2>Ready to deploy your first agent?</h2>
+          <p>Tell us about your operations, and we’ll show you the fastest path to automation.</p>
+          <button class="btn primary" id="open-form-footer">Contact sales</button>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-grid">
-        <div>
-          <div class="logo">Origon<span>AI</span></div>
-          <p>Agentic AI infrastructure for serious operators.</p>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <a href="#platform">Platform</a>
-          <a href="#how">How it works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#security">Security</a>
-        </div>
-        <div>
-          <h4>Use cases</h4>
-          <a href="#use-cases">Support automation</a>
-          <a href="#use-cases">Voice qualification</a>
-          <a href="#use-cases">Internal ops</a>
-          <a href="#use-cases">Founder assistant</a>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <a href="#">Documentation</a>
-          <a href="#">Contact</a>
-          <a href="#">Careers</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2024 Origon AI. All rights reserved.</p>
-        <p>Security &amp; compliance ready.</p>
-      </div>
+      <p>© 2024 Origon AI. Enterprise-grade agentic automation.</p>
     </footer>
+
+    <div class="modal" id="contact-modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+        <button class="modal-close" id="close-form" aria-label="Close contact form">×</button>
+        <h3 id="contact-title">Contact sales</h3>
+        <p>Share a few details and we’ll follow up within one business day.</p>
+        <form id="contact-form">
+          <label>
+            Full name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Work email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Company
+            <input type="text" name="company" required />
+          </label>
+          <label>
+            What do you want to automate?
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">Send request</button>
+          <p class="form-note" id="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("contact-modal");
+      const openButtons = [
+        document.getElementById("open-form"),
+        document.getElementById("open-form-hero"),
+        document.getElementById("open-form-footer"),
+      ];
+      const closeButton = document.getElementById("close-form");
+      const form = document.getElementById("contact-form");
+      const status = document.getElementById("form-status");
+
+      const openModal = () => {
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+      };
+
+      const closeModal = () => {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+        status.textContent = "";
+        form.reset();
+      };
+
+      openButtons.forEach((btn) => btn.addEventListener("click", openModal));
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        status.textContent = "Sending...";
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch("/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error("Request failed");
+          }
+
+          status.textContent = "Thanks — we’ll follow up shortly.";
+          setTimeout(closeModal, 1200);
+        } catch (error) {
+          status.textContent = "We couldn’t send that. Please try again.";
+        }
+      });
+    </script>
   </body>
 </html>
