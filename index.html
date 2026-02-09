@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action https://formspree.io; base-uri 'self'; frame-ancestors 'none';"
+    />
+    <title>Nitish AI — Agentic AI Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav">
+        <div class="logo">Nitish<span>AI</span></div>
+        <button class="btn primary" id="open-form">Contact sales</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Agentic AI Platform</p>
+          <h1>Build AI agents that run real operations.</h1>
+          <p class="subtext">
+            Create, deploy, and manage chat, voice, and workflow agents grounded in your SOPs.
+            Automate the operational work that slows teams down.
+          </p>
+          <div class="hero-actions">
+            <button class="btn primary" id="open-form-hero">Contact sales</button>
+            <p class="note">No sign-in. We respond within 6 business hours.</p>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-header">
+            <span>Live automation</span>
+            <span class="pill">Enterprise-ready</span>
+          </div>
+          <div class="panel-body">
+            <div class="panel-item">
+              <h4>Support Concierge</h4>
+              <p>Resolves tier-1 tickets, escalates exceptions.</p>
+            </div>
+            <div class="panel-item">
+              <h4>Voice Qualifier</h4>
+              <p>Calls inbound leads, books meetings, logs notes.</p>
+            </div>
+            <div class="panel-item">
+              <h4>Ops Coordinator</h4>
+              <p>Triggers workflows and reconciles systems.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <h2>What you can deploy</h2>
+          <p>Agents purpose-built for teams replacing manual operations.</p>
+        </div>
+        <div class="card-grid">
+          <article class="capability-card">
+            <h3>Personal agents</h3>
+            <p>Handle scheduling, research, and task execution for founders and operators.</p>
+          </article>
+          <article class="capability-card">
+            <h3>Ops automation</h3>
+            <p>Route approvals, update CRMs, reconcile inventory, and enforce SOPs.</p>
+          </article>
+          <article class="capability-card">
+            <h3>AI chatbots</h3>
+            <p>Support customers, deflect repetitive questions, and capture leads.</p>
+          </article>
+          <article class="capability-card">
+            <h3>Voice agents</h3>
+            <p>Answer calls, summarize conversations, and route requests.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="section-heading">
+          <h2>Trusted by serious operators</h2>
+          <p>Secure by design, audit-ready, and built for enterprise reliability.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-card">
+            <h3>Data privacy</h3>
+            <p>Encrypted storage, regional controls, and configurable retention.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Audit-ready</h3>
+            <p>Immutable logs and activity trails for compliance review.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Uptime focus</h3>
+            <p>Redundant infrastructure with 99.9% uptime SLAs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta">
+        <div class="cta-card">
+          <h2>Ready to deploy your first agent?</h2>
+          <p>Tell us about your operations, and we’ll show you the fastest path to automation.</p>
+          <button class="btn primary" id="open-form-footer">Contact sales</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2024 Nitish AI. Enterprise-grade agentic automation.</p>
+    </footer>
+
+    <div class="modal" id="contact-modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+        <button class="modal-close" id="close-form" aria-label="Close contact form">×</button>
+        <h3 id="contact-title">Contact sales</h3>
+        <p>Share a few details and we’ll follow up within one business day.</p>
+        <form
+          action="https://formspree.io/f/mwvnplgn"
+          class="fs-form"
+          target="_top"
+          method="POST"
+        >
+          <div class="fs-field">
+            <label class="fs-label" for="name">Your Name</label>
+            <input class="fs-input" id="name" name="name" required />
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="email">Email</label>
+            <input class="fs-input" id="email" name="email" required />
+            <p class="fs-description">This will help me respond to your query via an email.</p>
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="message">Message</label>
+            <textarea class="fs-textarea" id="message" name="message" required></textarea>
+            <p class="fs-description">What would you like to discuss?</p>
+          </div>
+          <div class="fs-button-group">
+            <button class="fs-button" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById("contact-modal");
+      const openButtons = [
+        document.getElementById("open-form"),
+        document.getElementById("open-form-hero"),
+        document.getElementById("open-form-footer"),
+      ];
+      const closeButton = document.getElementById("close-form");
+      const openModal = () => {
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+      };
+
+      const closeModal = () => {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+      };
+
+      openButtons.forEach((btn) => btn.addEventListener("click", openModal));
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+    </script>
+  </body>
+</html>
