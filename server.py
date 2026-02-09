@@ -52,24 +52,28 @@ def send_report() -> bool:
     if not all([SMTP_HOST, SMTP_USER, SMTP_PASS, SMTP_TO]):
         return False
 
-    message = EmailMessage()
-    message["Subject"] = "Origon AI contact requests"
-    message["From"] = SMTP_USER
-    message["To"] = SMTP_TO
-    message.set_content("Attached is the latest contact request export.")
+    try:
+        message = EmailMessage()
+        message["Subject"] = "Origon AI contact requests"
+        message["From"] = SMTP_USER
+        message["To"] = SMTP_TO
+        message.set_content("Attached is the latest contact request export.")
 
-    if WORKBOOK_PATH.exists():
-        message.add_attachment(
-            WORKBOOK_PATH.read_bytes(),
-            maintype="application",
-            subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            filename=WORKBOOK_PATH.name,
-        )
+        if WORKBOOK_PATH.exists():
+            message.add_attachment(
+                WORKBOOK_PATH.read_bytes(),
+                maintype="application",
+                subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                filename=WORKBOOK_PATH.name,
+            )
 
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-        server.starttls()
-        server.login(SMTP_USER, SMTP_PASS)
-        server.send_message(message)
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+            server.starttls()
+            server.login(SMTP_USER, SMTP_PASS)
+            server.send_message(message)
+    except Exception as exc:
+        print(f"Failed to send contact report: {exc}")
+        return False
     return True
 
 
