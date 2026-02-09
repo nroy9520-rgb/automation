@@ -188,13 +188,15 @@
           });
 
           if (!response.ok) {
-            throw new Error("Request failed");
+            const message = await response.text();
+            throw new Error(message || "Request failed");
           }
 
           status.textContent = "Thanks — we’ll follow up shortly.";
           setTimeout(closeModal, 1200);
         } catch (error) {
-          status.textContent = "We couldn’t send that. Please try again.";
+          status.textContent =
+            error.message || "We couldn’t send that. Please try again.";
         }
       });
     </script>

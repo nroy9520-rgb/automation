@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from datetime import datetime
 from email.message import EmailMessage
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -48,33 +49,40 @@ def append_contact(data: dict[str, str]) -> None:
     workbook.save(WORKBOOK_PATH)
 
 
-def send_report() -> bool:
+def send_report(max_attempts: int = 3, delay_seconds: float = 2.0) -> None:
     if not all([SMTP_HOST, SMTP_USER, SMTP_PASS, SMTP_TO]):
-        return False
+        raise RuntimeError("SMTP credentials are missing.")
 
-    try:
-        message = EmailMessage()
-        message["Subject"] = "Origon AI contact requests"
-        message["From"] = SMTP_USER
-        message["To"] = SMTP_TO
-        message.set_content("Attached is the latest contact request export.")
+    message = EmailMessage()
+    message["Subject"] = "Origon AI contact requests"
+    message["From"] = SMTP_USER
+    message["To"] = SMTP_TO
+    message.set_content("Attached is the latest contact request export.")
 
-        if WORKBOOK_PATH.exists():
-            message.add_attachment(
-                WORKBOOK_PATH.read_bytes(),
-                maintype="application",
-                subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                filename=WORKBOOK_PATH.name,
-            )
+    if WORKBOOK_PATH.exists():
+        message.add_attachment(
+            WORKBOOK_PATH.read_bytes(),
+            maintype="application",
+            subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            filename=WORKBOOK_PATH.name,
+        )
 
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.starttls()
-            server.login(SMTP_USER, SMTP_PASS)
-            server.send_message(message)
-    except Exception as exc:
-        print(f"Failed to send contact report: {exc}")
-        return False
-    return True
+    last_error: Exception | None = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+                server.starttls()
+                server.login(SMTP_USER, SMTP_PASS)
+                server.send_message(message)
+            return
+        except Exception as exc:
+            last_error = exc
+            if attempt < max_attempts:
+                time.sleep(delay_seconds)
+            else:
+                break
+
+    raise RuntimeError(f"Failed to send contact report: {last_error}")
 
 
 class ContactHandler(SimpleHTTPRequestHandler):
@@ -93,7 +101,15 @@ class ContactHandler(SimpleHTTPRequestHandler):
             return
 
         append_contact(data)
-        send_report()
+        try:
+            send_report()
+        except RuntimeError as exc:
+            message = str(exc)
+            self.send_response(502)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(message.encode("utf-8"))
+            return
         self.send_response(204)
         self.end_headers()
 
