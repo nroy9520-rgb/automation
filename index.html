@@ -120,30 +120,13 @@
         <button class="modal-close" id="close-form" aria-label="Close contact form">×</button>
         <h3 id="contact-title">Contact sales</h3>
         <p>Share a few details and we’ll follow up within one business day.</p>
-        <form
-          action="https://formspree.io/f/mwvnplgn"
-          class="fs-form"
-          target="_top"
-          method="POST"
-        >
-          <div class="fs-field">
-            <label class="fs-label" for="name">Your Name</label>
-            <input class="fs-input" id="name" name="name" required />
-          </div>
-          <div class="fs-field">
-            <label class="fs-label" for="email">Email</label>
-            <input class="fs-input" id="email" name="email" required />
-            <p class="fs-description">This will help me respond to your query via an email.</p>
-          </div>
-          <div class="fs-field">
-            <label class="fs-label" for="message">Message</label>
-            <textarea class="fs-textarea" id="message" name="message" required></textarea>
-            <p class="fs-description">What would you like to discuss?</p>
-          </div>
-          <div class="fs-button-group">
-            <button class="fs-button" type="submit">Submit</button>
-          </div>
+        <form id="contact-form">
+          <input type="email" name="email" placeholder="Work email" required />
+          <textarea name="message" placeholder="Tell us what you need" required></textarea>
+          <button type="submit">Submit</button>
         </form>
+
+        <p id="form-status"></p>
       </div>
     </div>
 
@@ -173,6 +156,29 @@
         }
       });
 
+      const form = document.getElementById("contact-form");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const data = new FormData(form);
+
+        const response = await fetch("https://formspree.io/f/mwvnplgn", {
+          method: "POST",
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          status.innerText = "Thanks! We’ll get back to you shortly.";
+          form.reset();
+        } else {
+          status.innerText = "Something went wrong. Please try again.";
+        }
+      });
     </script>
   </body>
 </html>
