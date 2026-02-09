@@ -120,25 +120,29 @@
         <button class="modal-close" id="close-form" aria-label="Close contact form">×</button>
         <h3 id="contact-title">Contact sales</h3>
         <p>Share a few details and we’ll follow up within one business day.</p>
-        <form id="contact-form">
-          <label>
-            Full name
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            Work email
-            <input type="email" name="email" required />
-          </label>
-          <label>
-            Company
-            <input type="text" name="company" required />
-          </label>
-          <label>
-            What do you want to automate?
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button class="btn primary" type="submit">Send request</button>
-          <p class="form-note" id="form-status" aria-live="polite"></p>
+        <form
+          action="https://formspree.io/f/mwvnplgn"
+          class="fs-form"
+          target="_top"
+          method="POST"
+        >
+          <div class="fs-field">
+            <label class="fs-label" for="name">Your Name</label>
+            <input class="fs-input" id="name" name="name" required />
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="email">Email</label>
+            <input class="fs-input" id="email" name="email" required />
+            <p class="fs-description">This will help me respond to your query via an email.</p>
+          </div>
+          <div class="fs-field">
+            <label class="fs-label" for="message">Message</label>
+            <textarea class="fs-textarea" id="message" name="message" required></textarea>
+            <p class="fs-description">What would you like to discuss?</p>
+          </div>
+          <div class="fs-button-group">
+            <button class="fs-button" type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </div>
@@ -151,9 +155,6 @@
         document.getElementById("open-form-footer"),
       ];
       const closeButton = document.getElementById("close-form");
-      const form = document.getElementById("contact-form");
-      const status = document.getElementById("form-status");
-
       const openModal = () => {
         modal.classList.add("show");
         modal.setAttribute("aria-hidden", "false");
@@ -162,8 +163,6 @@
       const closeModal = () => {
         modal.classList.remove("show");
         modal.setAttribute("aria-hidden", "true");
-        status.textContent = "";
-        form.reset();
       };
 
       openButtons.forEach((btn) => btn.addEventListener("click", openModal));
@@ -174,31 +173,6 @@
         }
       });
 
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        status.textContent = "Sending...";
-        const formData = new FormData(form);
-        const payload = Object.fromEntries(formData.entries());
-
-        try {
-          const response = await fetch("/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-
-          if (!response.ok) {
-            const message = await response.text();
-            throw new Error(message || "Request failed");
-          }
-
-          status.textContent = "Thanks — we’ll follow up shortly.";
-          setTimeout(closeModal, 1200);
-        } catch (error) {
-          status.textContent =
-            error.message || "We couldn’t send that. Please try again.";
-        }
-      });
     </script>
   </body>
 </html>
